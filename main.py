@@ -1,0 +1,3 @@
+"""
+Starting of new project
+"""
