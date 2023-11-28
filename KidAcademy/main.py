@@ -70,3 +70,13 @@ def create_content(current_user):
     users[current_user]["content"].append(content_text)
 
     print("Content created successfully.")
+    [200~def view_content():
+                print("Viewing content:")
+                    for username, data in users.items():
+                            for content in data["content"]:
+                                        print(f"{username}: {content}")
+
+
+                                        def main():
+                                            current_user = None
+
