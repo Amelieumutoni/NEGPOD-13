@@ -27,4 +27,4 @@ def display_course():
     print("Language: " + culture["language"])
     print("Image: " + culture["image"])
 
-display_course()
+
