@@ -1,11 +1,12 @@
+#!/usr/bin/env python
 """
 Starting of new project
 """
-#!/usr/bin/env python
-
 import hashlib
 
 import mysql.connector
+from validation import validate_username, validate_password
+
 database_config = {
     'host':'localhost',
     'user':'root',
