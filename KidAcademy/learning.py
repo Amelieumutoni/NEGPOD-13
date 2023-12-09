@@ -52,59 +52,96 @@ def update_level(score):
     else:
         return "Beginner"
 
+def register_user(users):
+    """Register a new user."""
+    username = input("Enter a username: ")
+    password = input("Enter a password: ")
+
+    # Check if the username is already taken
+    if username in users:
+        print("Username already taken. Please choose a different one.")
+    else:
+        users[username] = password
+        print("Registration successful!")
+
+def login_user(users):
+    """Login an existing user."""
+    username = input("Enter your username: ")
+    password = input("Enter your password: ")
+
+    # Check if the username and password match
+    if username in users and users[username] == password:
+        print("Login successful!")
+        return username
+    else:
+        print("Invalid username or password. Please try again.")
+        return None
+
 def main():
+    users = {}  # Dictionary to store user credentials
     scores = {}  # Dictionary to store user scores
     levels = {}  # Dictionary to store user levels
+    current_user = None  # To keep track of the currently logged-in user
 
-    while True:
+while True:
         # Display options
         print("Options:")
-        print("1. View Courses")
-        print("2. Practice Tests")
-        print("3. View Scores")
-        print("4. View Levels")
-        print("5. Quit")
+        print("1. Register")
+        print("2. Login")
+        print("3. View Courses")
+        print("4. Practice Tests")
+        print("5. View Scores")
+        print("6. View Levels")
+        print("7. Quit")
 
         # Get user input for option
-        option = input("Choose an option (1, 2, 3, 4, or 5): ")
+        option = input("Choose an option (1, 2, 3, 4, 5, 6, or 7): ")
 
         if option == "1":
+            # Register a new user
+            register_user(users)
+        elif option == "2":
+            # Login an existing user
+            current_user = login_user(users)
+        elif option == "3":
             # Display the course information
             display_course()
-        elif option == "2":
-            # Generate a custom exercise
-            question, correct_answer = generate_custom_exercise()
+        elif option == "4":
+            if current_user is not None:
+                # Generate a custom exercise
+                question, correct_answer = generate_custom_exercise()
 
-            while True:
-                # Display the exercise and get user input
-                user_input = input(question + " ")
+                while True:
+                    # Display the exercise and get user input
+                    user_input = input(question + " ")
 
-                # Check the user's answer
-                if check_answer(user_input, correct_answer):
-                    print("Correct! Good job.")
-                    # Update the user's score
-                    user_name = input("Enter your name: ")
-                    scores[user_name] = scores.get(user_name, 0) + 1
-                    # Update the user's level
-                    levels[user_name] = update_level(scores[user_name])
-                    break  # Exit the loop if the answer is correct
-                else:
-                    print("Sorry, the answer is incorrect. Please try again.")
-        elif option == "3":
+                    # Check the user's answer
+                    if check_answer(user_input, correct_answer):
+                        print("Correct! Good job.")
+                        # Update the user's score
+                        scores[current_user] = scores.get(current_user, 0) + 1
+                        # Update the user's level
+                        levels[current_user] = update_level(scores[current_user])
+                        break  # Exit the loop if the answer is correct
+                    else:
+                        print("Sorry, the answer is incorrect. Please try again.")
+            else:
+                print("Please log in before practicing tests.")
+        elif option == "5":
             # View scores
             print("Scores:")
             for user, score in scores.items():
                 print(f"{user}: {score} points")
-        elif option == "4":
+        elif option == "6":
             # View levels
             print("Levels:")
             for user, level in levels.items():
                 print(f"{user}: {level}")
-        elif option == "5":
+        elif option == "7":
             print("Exiting the program. Goodbye!")
             break
         else:
-            print("Invalid option. Please choose 1, 2, 3, 4, or 5.")
+            print("Invalid option. Please choose 1, 2, 3, 4, 5, 6, or 7.")
 
 if __name__ == "__main__":
     main()
