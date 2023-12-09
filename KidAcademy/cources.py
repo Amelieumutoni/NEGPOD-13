@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def display_course():
     course_title = "Rwandan Culture Course"
     course_description = "This course will provide an introduction to the Rwandan culture. You will learn about the customs, traditions, and values that shape Rwandan culture. You will also have the opportunity to practice the local language and learn about the unique geographical features of Rwanda."
