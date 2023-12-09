@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+
 def display_exam_results(students_scores):
     # Iterate through each student
     for student, score in students_scores.items():
