@@ -1,4 +1,4 @@
-i#!/usr/bin/python3
+#!/usr/bin/python3
 
 def display_exam_results(students_scores):
     # Iterate through each student
