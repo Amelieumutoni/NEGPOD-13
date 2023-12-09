@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def display_exam_results(students_scores):
     # Iterate through each student
     for student, score in students_scores.items():
@@ -7,7 +9,7 @@ def display_exam_results(students_scores):
 
         # Provide feedback based on the score
         if score >= 90:
-            feedback = "Excellent! Keep up the outstanding work."
+            feedback = "Good effort, but there's room for improvement."
         elif 80 <= score < 90:
             feedback = "Great job! You're doing well."
         elif 70 <= score < 80:

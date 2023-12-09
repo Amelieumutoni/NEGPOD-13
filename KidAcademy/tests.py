@@ -14,7 +14,7 @@ def check_answer(user_answer, correct_answer):
     return user_answer.lower() == correct_answer.lower()
 
 def open_another_file():
-    file_path = '/root/NEGPOD-13/KidAcademy/welcome.py'
+    file_path = '/root/NEGPOD-13/KidAcademy/main.py'
     os.system('xdg-open ' + file_path)
 
 def take_test():
