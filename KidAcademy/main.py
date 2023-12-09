@@ -1,22 +1,23 @@
+#!/usr/bin/python3
 """
-Starting of new project
+Starting of a new project
 """
-#!/usr/bin/env python
-
 import hashlib
-
 import mysql.connector
+from validation import validate_username, validate_password
+
 database_config = {
-    'host':'localhost',
-    'user':'root',
-    'password':'',
-    'database':'',
+    'host': 'localhost',
+    'user': 'root',
+    'password': '',
+    'database': '',
+    'port': 3306  # Add the port parameter with the correct port number
 }
+
 try:
     connection = mysql.connector.connect(**database_config)
-
-user_name = input("Enter your username");
-
+except mysql.connector.Error as err:
+    print(f"Error: {err}")
 
 users = {}
 
@@ -28,7 +29,7 @@ def register():
     # Check if the username already exists
     if username in users:
         print("Username already exists. Please choose a different one.")
-        return
+        return  # Correct indentation here
 
     password = input("Enter your password: ")
 
@@ -62,6 +63,7 @@ def login():
     else:
         print("Incorrect password.")
 
+
 def create_content(current_user):
     print(f"User '{current_user}' - Create content:")
     content_text = input("Enter your content: ")
@@ -69,12 +71,9 @@ def create_content(current_user):
     users[current_user]["content"].append(content_text)
 
     print("Content created successfully.")
-    [200~def view_content():
-                print("Viewing content:")
-                for username, data in users.items():
-                            for content in data["content"]:
-                            print(f"{username}: {content}")
-                            def view_content():
+
+
+def view_content():
     print("Viewing content:")
     for username, data in users.items():
         for content in data["content"]:
@@ -112,5 +111,5 @@ def main():
             print("Invalid choice. Please enter a number between 1 and 5.")
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
