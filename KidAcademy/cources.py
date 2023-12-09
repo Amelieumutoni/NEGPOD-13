@@ -25,7 +25,7 @@ def display_course():
     for feature in culture["geographical_features"]:
         print("- " + feature)
     print("Language: " + culture["language"])
-     print("Language: " + culture["language"])
+    print("Language: " + culture["language"])
     print("Image: " + culture["image"])
 
 display_course()
