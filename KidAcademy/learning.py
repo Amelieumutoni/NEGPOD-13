@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 
-# merged_program.py
 
 import random
 
@@ -83,7 +82,7 @@ def main():
     levels = {}  # Dictionary to store user levels
     current_user = None  # To keep track of the currently logged-in user
 
-while True:
+    while True:
         # Display options
         print("Options:")
         print("1. Register")
